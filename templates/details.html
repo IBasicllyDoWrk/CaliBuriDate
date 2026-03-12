@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a Spot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Cali Logo" class="main-logo">
+        
+        <div class="card">
+            <h2>When & Where? 🌮</h2>
+            
+            <div class="form-group">
+                <label>When? (I have a holiday on the 21st, exams end on the 22nd)</label>
+                <input type="date" id="datePicker">
+            </div>
+
+            <div class="form-group">
+                <label>Where? (I live near Velachery)</label>
+                <select id="storeSelector">
+                    <option value="Velachery">Velacherry</option>
+                    <option value="Phoenix Mall">Phoenix Mall</option>
+                    <option value="Kathipara Urban Square">Kathipara Urban Square</option>
+                    <option value="Express Avenue Mall">Express Avenue Mall</option>
+                    <option value="VR Mall">VR Mall</option>
+                    <option value="Nungambakkam">Nungambakkam</option>
+                </select>
+            </div>
+
+            <button id="confirmBtn" class="confirm-btn" data-hover="It's a date!">
+                <span>Confirm</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('confirmBtn').addEventListener('click', () => {
+            const date = document.getElementById('datePicker').value;
+            const store = document.getElementById('storeSelector').value;
+            
+            if(!date) {
+                alert("Please pick a date first!");
+                return;
+            }
+
+            const phoneNumber = "919962523345"; // Put your number here
+            const message = `Aight I'm in. Let's go to ${store} on ${date}`;
+            
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        });
+    </script>
+</body>
+</html>

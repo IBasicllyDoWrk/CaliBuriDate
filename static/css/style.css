@@ -1,0 +1,149 @@
+:root {
+    --cali-red: #e3181f;
+    --cali-green: #006837;
+    --off-white: #F9F7F2;
+    --dark-grey: #333;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--cali-red); /* Main background now Red */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.main-logo {
+    width: 220px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); /* Makes logo pop against red */
+}
+
+.card {
+    background: var(--off-white);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    border-bottom: 10px solid var(--cali-green); /* Green as a highlight anchor */
+}
+
+.sub-text {
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: var(--dark-grey);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#yesBtn {
+    background-color: var(--cali-green);
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,104,55,0.4);
+}
+
+#noBtn {
+    background-color: #ddd; /* Neutral grey so it doesn't fight the red background */
+    color: #444;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: var(--cali-green);
+    margin-bottom: 0.5rem;
+}
+
+input[type="date"], select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+input:focus, select:focus {
+    border-color: var(--cali-green);
+    outline: none;
+}
+
+.confirm-btn {
+    background-color: var(--cali-green);
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Hover text swap for the confirm button */
+.confirm-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.confirm-btn span {
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.confirm-btn::after {
+    content: attr(data-hover);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    transform: translateY(100%); /* Start hidden below */
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.confirm-btn:hover span {
+    transform: translateY(-150%); /* Move original text up */
+    opacity: 0;
+}
+
+.confirm-btn:hover::after {
+    transform: translateY(-50%); /* Move "It's a date" into center */
+    opacity: 1;
+}
